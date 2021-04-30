@@ -1,8 +1,7 @@
 import express from 'express';
-import { runInNewContext } from 'vm';
 
 let appLogger = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    // url, method, time, data
+    // url, method, data, time
     let url = req.url;
     let method = req.method;
     let date = new Date().toLocaleDateString();

@@ -17,5 +17,4 @@ app.use(express.urlencoded({extended: false}));
 // router configuration
 app.use('/users', userRouter);
 
-app.listen(port, hostname, () =>
-    console.log(`Express Server is started at http://${hostname}:${port}`));
+app.listen(port, hostname, () => console.log(`Express Server is started at http://${hostname}:${port}`));

@@ -4,7 +4,11 @@ import { check, validationResult } from 'express-validator';
 
 const userRouter: express.Router = express.Router();
 
-// logic
+/*
+    @method : get
+    @fields : none
+    @access : public
+*/
 userRouter.get('/', (req: express.Request, res: express.Response) => {
     res.status(200).send(`
     <h3 style="font-family: Lato.sans-serif; color: cadetblue">
@@ -14,19 +18,16 @@ userRouter.get('/', (req: express.Request, res: express.Response) => {
 });
 
 /*
-    @usage : to check the form data
-    @url : http://127.0.0.1:5000/users/login
     @method : post
     @fields : name, password, email
     @access : public
 */
-// userRouter.post('/login', appLogger, (req: express.Request, res: express.Response) => {
 userRouter.post('/register', [
+    // fields validation
     check('name')
         .isLength({ min: 1 }).trim()
         .withMessage('Username cannot be empty.')
         .matches(/^[a-zA-Z0-9_]+$/, 'i').withMessage('Username must be alphanumeric, and can contain underscores'),
-
 
     check('email')
     .isEmail()
